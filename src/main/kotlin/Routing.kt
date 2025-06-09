@@ -14,5 +14,10 @@ fun Application.configureRouting() {
         get("/") {
             call.respondText("Hello World!")
         }
+        post("/tasks") {
+            val newTask = call.receive<Task>()
+           tasks.add(newTask) // add to the list
+            call.respond(mapOf("message" to "Task added", "task" to newTask))
+        }
     }
 }

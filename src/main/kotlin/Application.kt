@@ -15,6 +15,11 @@ fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)
 }
 
+val tasks = mutableListOf(
+    Task(1,"Call Mom",false),
+    Task(2,"Call Friends",false)
+
+)
 fun Application.module() {
     configureSerialization()
     configureMonitoring()
@@ -22,11 +27,6 @@ fun Application.module() {
 
 
 
-    val tasks = mutableListOf(
-        Task(1,"Call Mom",false),
-        Task(2,"Call Friends",false)
-
-    )
 
     routing {
         get("/tasks"){
