@@ -6,10 +6,7 @@ package com.example
         import io.ktor.server.netty.Netty
         import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 
-val tasks = mutableListOf(
-            Task(1, "Call Mom", false),
-            Task(2, "Call Friends", false)
-        )
+val tasks =mutableListOf<Task>()
 
   // In your Application.kt file
   fun Application.configureContentNegotiation() {
@@ -17,6 +14,11 @@ val tasks = mutableListOf(
           json()
       }
   }
+fun Application.configureDatabases() {
+    DatabaseFactory.init(environment)
+}
+
+
 
   // Make sure to call this in your main function:
   fun main() {
@@ -30,4 +32,5 @@ val tasks = mutableListOf(
             configureSerialization()
             configureMonitoring()
             configureRouting()
+            configureDatabases()
         }
