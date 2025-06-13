@@ -1,9 +1,16 @@
 ktor:
   deployment:
-    port: 8080
+
+    sslPort: 8444
   application:
     modules:
       - com.example.ApplicationKt.module
+  security:
+    ssl:
+      keyStore: keystore.p12
+      keyAlias: tasknote
+      keyStorePassword: "971358"
+      privateKeyPassword: "971358"
 
 database:
   url: "jdbc:postgresql://localhost:5432/tasknote_db"
