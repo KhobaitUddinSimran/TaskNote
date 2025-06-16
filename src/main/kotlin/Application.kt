@@ -22,9 +22,10 @@ fun Application.configureDatabases() {
 
   // Make sure to call this in your main function:
   fun main() {
-      embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
-          configureContentNegotiation() // Add this line
+      embeddedServer(Netty, port = System.getenv("PORT")?.toInt() ?: 8080, host = "0.0.0.0") {
+          configureContentNegotiation()
           configureRouting()
+          configureDatabases()
           // other configurations...
       }.start(wait = true)
   }
